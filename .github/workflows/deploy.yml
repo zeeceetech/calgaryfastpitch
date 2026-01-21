@@ -7,6 +7,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      ARTIFACT_NAME: "github-pages-${{ github.run_id }}"
     # Grant minimal rights required for Pages deployment
     permissions:
       contents: read
@@ -24,18 +26,19 @@ jobs:
       - name: Create Pages tarball
         run: |
           # Create a single gzip archive (tar.gz) containing the site files
-          # The deploy action expects an artifact named `github-pages` that contains
-          # a single tarball (gzipped tar works fine).
-          tar -czf github-pages.tar.gz -C public .
+          # Name it uniquely per run so deploy-pages doesn't find multiple
+          # artifacts with the same name when multiple uploads exist.
+          tar -czf "${ARTIFACT_NAME}.tar.gz" -C public .
 
       - name: Upload Pages artifact (use upload-artifact@v4)
         uses: actions/upload-artifact@v4
         with:
-          name: github-pages
-          path: github-pages.tar.gz
+          name: ${{ env.ARTIFACT_NAME }}
+          path: ${{ env.ARTIFACT_NAME }}.tar.gz
           if-no-files-found: error
+          overwrite: true
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: github-pages
+          artifact_name: ${{ env.ARTIFACT_NAME }}
