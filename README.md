@@ -45,9 +45,13 @@ python -m http.server 8000
 
 Deploy to GitHub Pages (from `public/` folder)
 1. Push this repository to GitHub (branch `main`).
-2. The workflow at `.github/workflows/deploy.yml` will run on push and publish the repository `public/` folder to the `gh-pages` branch using the `GITHUB_TOKEN`.
-3. After the action completes, enable GitHub Pages for the repository and set the source to the `gh-pages` branch (if not already enabled).
-4. If you prefer to publish a different folder, update `publish_dir` in `.github/workflows/deploy.yml`.
+2. The workflow at `.github/workflows/deploy.yml` will run on push and publish the repository `public/` folder to GitHub Pages using GitHub's Pages actions.
+	- The workflow runs a quick smoke test, uploads `./public` as a Pages artifact, and uses the `actions/deploy-pages` action to publish it.
+3. Repository permissions: ensure Actions workflows have permission to write Pages artifacts:
+	- Go to Settings → Actions → General → Workflow permissions and enable "Read and write permissions" for GitHub Actions. This lets the workflow publish the site using the built-in GITHUB_TOKEN.
+	- If your organization blocks write permissions, create a Personal Access Token (repo scope) and add it to repo Secrets (name it `GH_PAGES_PAT`) and I can update the workflow to use it.
+4. After the action completes, enable GitHub Pages for the repository (if not auto-enabled) and set the source to "GitHub Pages" (the Pages action will handle publishing to the Pages system).
+5. If you prefer to publish a different folder, update the `path` in the `upload-pages-artifact` step in `.github/workflows/deploy.yml`.
 
 Run the smoke test locally
 From PowerShell in the project folder:
