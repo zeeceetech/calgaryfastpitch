@@ -21,10 +21,21 @@ jobs:
         run: |
           pwsh -NoProfile -Command "./tests/smoke.ps1"
 
-      - name: Upload `public/` as Pages artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Create Pages tarball
+        run: |
+          # Create a single gzip archive (tar.gz) containing the site files
+          # The deploy action expects an artifact named `github-pages` that contains
+          # a single tarball (gzipped tar works fine).
+          tar -czf github-pages.tar.gz -C public .
+
+      - name: Upload Pages artifact (use upload-artifact@v4)
+        uses: actions/upload-artifact@v4
         with:
-          path: ./public
+          name: github-pages
+          path: github-pages.tar.gz
+          if-no-files-found: error
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages
