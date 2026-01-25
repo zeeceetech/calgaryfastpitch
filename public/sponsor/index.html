@@ -13,6 +13,64 @@
 		<link rel="icon" type="image/png" href="../assets/favicon.png" />
 		<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
+		<style>
+			/* Remove divider lines in feature list */
+			#features .feature-list section {
+				border-top: 0 !important;
+				padding-top: 0 !important;
+			}
+
+			/* Make sponsorship tier cards equal height and align buttons */
+			@media screen and (min-width: 981px) {
+				#highlights .row.aln-center {
+					display: flex;
+					flex-wrap: wrap;
+					align-items: stretch;
+				}
+				#highlights .row.aln-center > div {
+					display: flex;
+				}
+				#highlights .highlight {
+					display: flex;
+					flex-direction: column;
+					width: 100%;
+					height: 100%;
+				}
+				#highlights .highlight h3 {
+					flex-shrink: 0;
+				}
+				#highlights .highlight p,
+				#highlights .highlight ul[style] {
+					flex-grow: 1;
+				}
+				#highlights .highlight ul.actions {
+					flex-shrink: 0;
+					margin-top: 1em;
+				}
+
+				/* Make "Help Us Improve" items equal height */
+				#features .feature-list .row {
+					display: flex;
+					flex-wrap: wrap;
+					align-items: stretch;
+				}
+				#features .feature-list .row > div {
+					display: flex;
+				}
+				#features .feature-list section {
+					display: flex;
+					flex-direction: column;
+					width: 100%;
+					height: 100%;
+				}
+				#features .feature-list section h3 {
+					flex-shrink: 0;
+				}
+				#features .feature-list section p {
+					flex-grow: 1;
+				}
+			}
+		</style>
 	</head>
 	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
@@ -61,7 +119,7 @@
 							<section id="features">
 								<header class="style1">
 									<h2>Your Support Helps Us Improve</h2>
-									<p>We're looking for sponsorship to help cover expenses for the following</p>
+									<p>We're looking for sponsors to help cover expenses for the following</p>
 								</header>
 								<div class="feature-list">
 									<div class="row">
@@ -83,13 +141,13 @@
 												<p>Upgraded fencing for player and spectator safety.</p>
 											</section>
 										</div>
-										<div class="col-6 col-12-medium">
+										<div class="col-4 col-12-medium">
 											<section>
 												<h3 class="icon solid fa-heartbeat">An AED Machine</h3>
 												<p>Critical emergency medical equipment for player safety.</p>
 											</section>
 										</div>
-										<div class="col-6 col-12-medium">
+										<div class="col-4 col-12-medium">
 											<section>
 												<h3 class="icon solid fa-restroom">New Bathrooms and Changerooms</h3>
 												<p>Modern facilities for player and spectator comfort.</p>
