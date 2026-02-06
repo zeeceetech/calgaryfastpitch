@@ -52,11 +52,47 @@
 										<p>We'd love to hear from you!</p>
 									</header>
 									
-									<p style="text-align: center;">Click the button below to send us a note and we will get back to you.</p>
+									<p style="text-align: center;">Click the button below to send us a note via your default email client:</p>
 
                                     <p style="text-align: center;">
                                         <a href="mailto:info@calgaryfastpitch.com?subject=Interested%20in%20joining%20the%20league" class="button style1 large">Email Us to Join</a>
                                     </p>
+                                    
+                                    <p style="text-align: center;">Or if you use Gmail:</p>
+                                    <p style="text-align: center;">
+                                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@calgaryfastpitch.com&su=Interested%20in%20joining%20the%20league" target="_blank" class="button style2">Open in Gmail</a>
+                                    </p>
+
+                                    <hr />
+                                    
+                                    <h3>Send us a message directly</h3>
+                                    <p>Fill out the form below to send us an email directly from this page.</p>
+                                    <!-- 
+                                        To make this form work, you need to register with a service like Formspree (https://formspree.io).
+                                        1. Sign up for a free account.
+                                        2. Create a new form and get your unique Form ID (e.g., https://formspree.io/f/mqkglqle).
+                                        3. Replace the 'action' URL below with your unique Form ID string.
+                                    -->
+                                    <form method="post" action="https://formspree.io/f/YOUR_FORM_ID_HERE">
+                                        <div class="row gtr-50">
+                                            <div class="col-6 col-12-small">
+                                                <input type="text" name="name" id="name" placeholder="Name" required />
+                                            </div>
+                                            <div class="col-6 col-12-small">
+                                                <input type="email" name="email" id="email" placeholder="Email" required />
+                                            </div>
+                                            <div class="col-12">
+                                                <input type="hidden" name="_subject" value="Interested in joining the league" />
+                                                <textarea name="message" id="message" placeholder="Message" rows="6" required></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <ul class="actions">
+                                                    <li><input type="submit" value="Send Message" class="style1" /></li>
+                                                    <li><input type="reset" value="Clear" class="style2" /></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </form>
 
 								</article>
 							</div>
